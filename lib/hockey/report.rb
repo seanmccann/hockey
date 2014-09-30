@@ -26,6 +26,14 @@ module Hockey
       pl_doc.xpath("/html/body/table[@class='tablewidth'][1]/tr[1]/td/table[@class='tablewidth']/tr/td/table/tr/td[3]/table[@id='Home']/tr[3]/td/text()").first.to_s
     end
 
+    def away_score
+      pl_doc.xpath("/html/body/table[@class='tablewidth'][1]/tr[1]/td/table[@class='tablewidth']/tr/td/table/tr/td[1]/table[@id='Visitor']/tr[2]/td/table/tr/td[2]/text()").first.to_s.to_i
+    end
+
+    def home_score
+      pl_doc.xpath("/html/body/table[@class='tablewidth'][1]/tr[1]/td/table[@class='tablewidth']/tr/td/table/tr/td[3]/table[@id='Home']/tr[2]/td/table/tr/td[2]/text()").first.to_s.to_i
+    end
+
     def game_number
       pl_doc.xpath("/html/body/table[@class='tablewidth'][1]/tr[1]/td/table[@class='tablewidth']/tr/td/table/tr/td[2]/table/tr[7]/td/text()").to_s.gsub('Match/', '').gsub('Game', '').to_i
     end

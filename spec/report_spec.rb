@@ -33,6 +33,8 @@ describe Hockey::Report, vcr: { match_requests_on: [:host] } do
 
     it { expect(report.away_team).to eq "NEW YORK RANGERS" }
     it { expect(report.home_team).to eq "LOS ANGELES KINGS" }
+    it { expect(report.home_score).to eq 3 }
+    it { expect(report.away_score).to eq 2 }
     it { expect(report.played_on).to eq Date.parse("2014-06-04") }
     it { expect(report.started_at).to eq Time.parse("2014-06-04 5:21 PDT") }
     it { expect(report.ended_at).to eq Time.parse("2014-06-04 08:12 PDT") }
