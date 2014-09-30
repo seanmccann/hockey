@@ -26,8 +26,5 @@ describe Hockey::Report, vcr: { match_requests_on: [:host] } do
       it { expect(report.plays[50].home_on_ice.first.keys.count).to eq 3 }
       it { expect(report.plays[50].home_on_ice.first[:name]).to eq "DEREK ROY" }
     end
-
-    # it { expect(report.home_players.first.name).to eq "SETH JONES" }
-    # it { expect(report.away_players.first.name).to eq "BARRET JACKMAN" }
   end
 end
