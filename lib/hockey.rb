@@ -1,5 +1,5 @@
+require 'nokogiri'
+require 'byebug'
+require 'chronic'
 require "hockey/version"
-
-module Hockey
-  # Your code goes here...
-end
+require "hockey/report"
