@@ -13,5 +13,21 @@ describe Hockey::Report, vcr: { match_requests_on: [:host] } do
     it { expect(report.venue).to eq "Scottrade Center" }
     it { expect(report.game_number).to eq 10 }
     it { expect(report.status).to eq "Final" }
+    it { expect(report.plays.class).to eq Array }
+    it { expect(report.plays.count).to eq 255 }
+    it { expect(report.plays.last.description).to include "Game End" }
+
+    describe 'players on ice' do
+      it { expect(report.plays[50].description).to include "NSH ONGOAL" }
+      it { expect(report.plays[50].strength).to eq "EV" }
+      it { expect(report.plays[50].away_on_ice.count).to eq 6 }
+      it { expect(report.plays[50].home_on_ice.count).to eq 6 }
+      it { expect(report.plays[50].home_on_ice.first.class).to eq Hash }
+      it { expect(report.plays[50].home_on_ice.first.keys.count).to eq 3 }
+      it { expect(report.plays[50].home_on_ice.first[:name]).to eq "DEREK ROY" }
+    end
+
+    # it { expect(report.home_players.first.name).to eq "SETH JONES" }
+    # it { expect(report.away_players.first.name).to eq "BARRET JACKMAN" }
   end
 end
