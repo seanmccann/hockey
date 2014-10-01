@@ -18,6 +18,12 @@ module Hockey
       Nokogiri::HTML(f)
     end
 
+    def tv_doc
+      filename = "/Users/sean/Desktop/#{@season}/TV#{season_prefix}#{@game_id}.HTM"
+      f = File.open(filename)
+      Nokogiri::HTML(f)
+    end
+
     def away_team
       pl_doc.xpath("/html/body/table[@class='tablewidth'][1]/tr[1]/td/table[@class='tablewidth']/tr/td/table/tr/td[1]/table[@id='Visitor']/tr[3]/td/text()").first.to_s
     end
@@ -96,15 +102,5 @@ module Hockey
 
       game_plays
     end
-
-    # def home_players
-    #   # []
-    #   mag = pl_doc.xpath("/html/body/table[@class='tablewidth'][1]/tr/td/table[@class='tablewidth']/tr/td/table/tr[1]/td[@class='border'][1]/table/tr")
-    #   # byebug
-    # end
-    #
-    # def away_players
-    #   []
-    # end
   end
 end
